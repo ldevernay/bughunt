@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liste des bugs</title>
+    </head>
+    <body>
+        <h1>Liste des bugs</h1>
+
+        <ul id="bugs_list">
+            {% for bug in bugs %}
+                <li>{{ bug.title }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -11,22 +11,54 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BugController extends Controller
 {
-    /**
-     * @Route("/bug_create", name="bug_create")
-     */
-    public function createAction(Request $request)
-    {
-        $bug = New Bug();
-        $bug->setStatus('open');
-        $bug->setTitle('Nouvelle exception');
-        $bug->setDescription("Quand je lance mon code, une erreur s'affiche");
-        $bug->setLanguages("PHP");
-        $bug->setCreator(new Developper("Bob"));
+  /**
+  * @Route("/bug_create", name="bug_create")
+  */
+  public function createAction(Request $request)
+  {
+    $bug = New Bug();
+    $bug->setStatus('open');
+    $bug->setTitle('Nouvelle exception');
+    $bug->setDescription("Quand je lance mon code, une erreur s'affiche");
+    $bug->setLanguages("PHP");
+    $bug->setCreator(new Developper("Bob"));
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($bug);
-        $em->flush();
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($bug);
+    $em->flush();
 
-        return new Response("Saved new bug with id ".$bug->getId());
+    return new Response("Saved new bug with id ".$bug->getId());
+  }
+
+  /**
+  * @Route("/bugs", name="bug_list")
+  */
+  public function listAction()
+  {
+    $repository = $this->getDoctrine()->getRepository('AppBundle:Bug');
+
+    // find *all* bugs
+    $bugs = $repository->findAll();
+
+    return $this->render('bug/list.html.twig', array(
+      'bugs' => $bugs,
+    ));
+  }
+
+  public function showAction($bugId)
+  {
+    $bug = $this->getDoctrine()
+    ->getRepository('AppBundle:Bug')
+    ->find($bugId);
+
+    if (!$bug) {
+      throw $this->createNotFoundException(
+        'No bug found for id '.$bugId
+      );
     }
+
+    return $this->render('bug/view.html.twig', array(
+      'bug' => $bug,
+    ));
+  }
 }
