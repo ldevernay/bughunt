@@ -249,3 +249,4 @@ class Bug {
     return $this->creation_date;
   }
 }
+?>
