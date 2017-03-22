@@ -1,11 +1,13 @@
 <?php
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Developper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
 * @ORM\Table(name="bug")
+* @ORM\HasLifecycleCallbacks
 */
 class Bug {
   /**
@@ -27,15 +29,19 @@ class Bug {
   */
   private $description;
   /**
-  * @ORM\Column(type="string", length=100)
+  * @ORM\Column(type="string", length=100, nullable=true)
   */
   private $github_link;
   /**
-  * @ORM\Column(type="integer")
+  * Many Bugs have One creator.
+  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Developper",cascade={"persist"})
+  * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
   */
   private $creator;
   /**
-  * @ORM\Column(type="integer")
+  * Many Bugs have One fixer.
+  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Developper",cascade={"persist"})
+  * @ORM\JoinColumn(name="fixer_id", referencedColumnName="id", nullable=true)
   */
   private $fixer;
   /**
@@ -154,54 +160,6 @@ class Bug {
   }
 
   /**
-  * Set creator
-  *
-  * @param integer $creator
-  *
-  * @return Bug
-  */
-  public function setCreator($creator)
-  {
-    $this->creator = $creator;
-
-    return $this;
-  }
-
-  /**
-  * Get creator
-  *
-  * @return integer
-  */
-  public function getCreator()
-  {
-    return $this->creator;
-  }
-
-  /**
-  * Set fixer
-  *
-  * @param integer $fixer
-  *
-  * @return Bug
-  */
-  public function setFixer($fixer)
-  {
-    $this->fixer = $fixer;
-
-    return $this;
-  }
-
-  /**
-  * Get fixer
-  *
-  * @return integer
-  */
-  public function getFixer()
-  {
-    return $this->fixer;
-  }
-
-  /**
   * Set languages
   *
   * @param string $languages
@@ -248,4 +206,63 @@ class Bug {
   {
     return $this->creation_date;
   }
+
+  /**
+  * Gets triggered only on insert
+
+  * @ORM\PrePersist
+  */
+  public function onPrePersist()
+  {
+    $this->creation_date = new \DateTime("now");
+  }
+
+
+    /**
+     * Set creator
+     *
+     * @param \AppBundle\Entity\Developper $creator
+     *
+     * @return Bug
+     */
+    public function setCreator(\AppBundle\Entity\Developper $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \AppBundle\Entity\Developper
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * Set fixer
+     *
+     * @param \AppBundle\Entity\Developper $fixer
+     *
+     * @return Bug
+     */
+    public function setFixer(\AppBundle\Entity\Developper $fixer = null)
+    {
+        $this->fixer = $fixer;
+
+        return $this;
+    }
+
+    /**
+     * Get fixer
+     *
+     * @return \AppBundle\Entity\Developper
+     */
+    public function getFixer()
+    {
+        return $this->fixer;
+    }
 }

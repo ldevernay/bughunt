@@ -8,6 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 * @ORM\Table(name="developper")
 */
 class Developper {
+  function __construct($dev_name) {
+    $this->username = $dev_name;
+    $this->title = $dev_name;
+    $this->description = $dev_name;
+    $this->github = $dev_name;
+    $this->languages = $dev_name;
+  }
   /**
   * @ORM\Column(type="integer")
   * @ORM\Id
@@ -35,133 +42,133 @@ class Developper {
   */
   private $languages;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+  * Get id
+  *
+  * @return integer
+  */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return Developper
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
+  /**
+  * Set username
+  *
+  * @param string $username
+  *
+  * @return Developper
+  */
+  public function setUsername($username)
+  {
+    $this->username = $username;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
+  /**
+  * Get username
+  *
+  * @return string
+  */
+  public function getUsername()
+  {
+    return $this->username;
+  }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Developper
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
+  /**
+  * Set title
+  *
+  * @param string $title
+  *
+  * @return Developper
+  */
+  public function setTitle($title)
+  {
+    $this->title = $title;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
+  /**
+  * Get title
+  *
+  * @return string
+  */
+  public function getTitle()
+  {
+    return $this->title;
+  }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Developper
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+  /**
+  * Set description
+  *
+  * @param string $description
+  *
+  * @return Developper
+  */
+  public function setDescription($description)
+  {
+    $this->description = $description;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+  /**
+  * Get description
+  *
+  * @return string
+  */
+  public function getDescription()
+  {
+    return $this->description;
+  }
 
-    /**
-     * Set github
-     *
-     * @param string $github
-     *
-     * @return Developper
-     */
-    public function setGithub($github)
-    {
-        $this->github = $github;
+  /**
+  * Set github
+  *
+  * @param string $github
+  *
+  * @return Developper
+  */
+  public function setGithub($github)
+  {
+    $this->github = $github;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get github
-     *
-     * @return string
-     */
-    public function getGithub()
-    {
-        return $this->github;
-    }
+  /**
+  * Get github
+  *
+  * @return string
+  */
+  public function getGithub()
+  {
+    return $this->github;
+  }
 
-    /**
-     * Set languages
-     *
-     * @param string $languages
-     *
-     * @return Developper
-     */
-    public function setLanguages($languages)
-    {
-        $this->languages = $languages;
+  /**
+  * Set languages
+  *
+  * @param string $languages
+  *
+  * @return Developper
+  */
+  public function setLanguages($languages)
+  {
+    $this->languages = $languages;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get languages
-     *
-     * @return string
-     */
-    public function getLanguages()
-    {
-        return $this->languages;
-    }
+  /**
+  * Get languages
+  *
+  * @return string
+  */
+  public function getLanguages()
+  {
+    return $this->languages;
+  }
 }
