@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="bug")
+* @ORM\Table(name="developper")
 */
-class Bug {
+class Developper {
   /**
   * @ORM\Column(type="integer")
   * @ORM\Id
@@ -17,7 +17,7 @@ class Bug {
   /**
   * @ORM\Column(type="string", length=100)
   */
-  private $status;
+  private $username;
   /**
   * @ORM\Column(type="string", length=100)
   */
@@ -29,23 +29,11 @@ class Bug {
   /**
   * @ORM\Column(type="string", length=100)
   */
-  private $github_link;
-  /**
-  * @ORM\Column(type="integer")
-  */
-  private $creator;
-  /**
-  * @ORM\Column(type="integer")
-  */
-  private $fixer;
+  private $github;
   /**
   * @ORM\Column(type="text")
   */
   private $languages;
-  /**
-  * @ORM\Column(type="datetime")
-  */
-  private $creation_date;
 }
 
 ?>

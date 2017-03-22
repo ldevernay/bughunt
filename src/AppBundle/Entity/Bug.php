@@ -47,205 +47,210 @@ class Bug {
   */
   private $creation_date;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+  * Get id
+  *
+  * @return integer
+  */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Bug
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
+  /**
+  * Set status
+  *
+  * @param string $status
+  *
+  * @return Bug
+  */
+  public function setStatus($status)
+  {
+    $this->status = $status;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
+  /**
+  * Get status
+  *
+  * @return string
+  */
+  public function getStatus()
+  {
+    return $this->status;
+  }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Bug
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
+  /**
+  * Set title
+  *
+  * @param string $title
+  *
+  * @return Bug
+  */
+  public function setTitle($title)
+  {
+    $this->title = $title;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
+  /**
+  * Get title
+  *
+  * @return string
+  */
+  public function getTitle()
+  {
+    return $this->title;
+  }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Bug
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+  /**
+  * Set description
+  *
+  * @param string $description
+  *
+  * @return Bug
+  */
+  public function setDescription($description)
+  {
+    $this->description = $description;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+  /**
+  * Get description
+  *
+  * @return string
+  */
+  public function getDescription()
+  {
+    return $this->description;
+  }
 
-    /**
-     * Set githubLink
-     *
-     * @param string $githubLink
-     *
-     * @return Bug
-     */
-    public function setGithubLink($githubLink)
-    {
-        $this->github_link = $githubLink;
+  /**
+  * Set githubLink
+  *
+  * @param string $githubLink
+  *
+  * @return Bug
+  */
+  public function setGithubLink($githubLink)
+  {
+    $this->github_link = $githubLink;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get githubLink
-     *
-     * @return string
-     */
-    public function getGithubLink()
-    {
-        return $this->github_link;
-    }
+  /**
+  * Get githubLink
+  *
+  * @return string
+  */
+  public function getGithubLink()
+  {
+    return $this->github_link;
+  }
 
-    /**
-     * Set creator
-     *
-     * @param integer $creator
-     *
-     * @return Bug
-     */
-    public function setCreator($creator)
-    {
-        $this->creator = $creator;
+  /**
+  * Set creator
+  *
+  * @param integer $creator
+  *
+  * @return Bug
+  */
+  public function setCreator($creator)
+  {
+    $this->creator = $creator;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get creator
-     *
-     * @return integer
-     */
-    public function getCreator()
-    {
-        return $this->creator;
-    }
+  /**
+  * Get creator
+  *
+  * @return integer
+  */
+  public function getCreator()
+  {
+    return $this->creator;
+  }
 
-    /**
-     * Set fixer
-     *
-     * @param integer $fixer
-     *
-     * @return Bug
-     */
-    public function setFixer($fixer)
-    {
-        $this->fixer = $fixer;
+  /**
+  * Set fixer
+  *
+  * @param integer $fixer
+  *
+  * @return Bug
+  */
+  public function setFixer($fixer)
+  {
+    $this->fixer = $fixer;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get fixer
-     *
-     * @return integer
-     */
-    public function getFixer()
-    {
-        return $this->fixer;
-    }
+  /**
+  * Get fixer
+  *
+  * @return integer
+  */
+  public function getFixer()
+  {
+    return $this->fixer;
+  }
 
-    /**
-     * Set languages
-     *
-     * @param string $languages
-     *
-     * @return Bug
-     */
-    public function setLanguages($languages)
-    {
-        $this->languages = $languages;
+  /**
+  * Set languages
+  *
+  * @param string $languages
+  *
+  * @return Bug
+  */
+  public function setLanguages($languages)
+  {
+    $this->languages = $languages;
+  /**
+  * @ORM\Column(type="dtetime")
+  */
+  private $creation_date;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get languages
-     *
-     * @return string
-     */
-    public function getLanguages()
-    {
-        return $this->languages;
-    }
+  /**
+  * Get languages
+  *
+  * @return string
+  */
+  public function getLanguages()
+  {
+    return $this->languages;
+  }
 
-    /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     *
-     * @return Bug
-     */
-    public function setCreationDate($creationDate)
-    {
-        $this->creation_date = $creationDate;
+  /**
+  * Set creationDate
+  *
+  * @param \DateTime $creationDate
+  *
+  * @return Bug
+  */
+  public function setCreationDate($creationDate)
+  {
+    $this->creation_date = $creationDate;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get creationDate
-     *
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
-        return $this->creation_date;
-    }
+  /**
+  * Get creationDate
+  *
+  * @return \DateTime
+  */
+  public function getCreationDate()
+  {
+    return $this->creation_date;
+  }
 }
+?>
