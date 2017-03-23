@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class BugController extends Controller
@@ -38,14 +39,17 @@ class BugController extends Controller
   {
     // create a bug and give it some dummy data for this example
     $bug = New Bug();
+    $bug->setStatus(false);
     $bug->setCreator(new Developper("Bob"));
 
     $form = $this->createFormBuilder($bug)
     ->add('title', TextType::class)
     ->add('description', TextType::class)
-    ->add('status', TextType::class)
     ->add('languages', TextType::class)
     ->add('githubLink', TextType::class)
+    ->add('status', CheckboxType::class, array(
+      'disabled' => true
+    ))
     ->add('save', SubmitType::class, array('label' => 'Créer Bug'))
     ->getForm();
 
@@ -122,9 +126,9 @@ class BugController extends Controller
     $form = $this->createFormBuilder($bug)
     ->add('title', TextType::class)
     ->add('description', TextType::class)
-    ->add('status', TextType::class)
     ->add('languages', TextType::class)
     ->add('githubLink', TextType::class)
+    ->add('status', CheckboxType::class)
     ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
     ->getForm();
 

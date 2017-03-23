@@ -19,7 +19,7 @@ class Bug {
   private $id;
   /**
   * @Assert\NotBlank()
-  * @ORM\Column(type="string", length=100)
+  * @ORM\Column(type="boolean")
   */
   private $status;
   /**
@@ -68,30 +68,6 @@ class Bug {
   public function getId()
   {
     return $this->id;
-  }
-
-  /**
-  * Set status
-  *
-  * @param string $status
-  *
-  * @return Bug
-  */
-  public function setStatus($status)
-  {
-    $this->status = $status;
-
-    return $this;
-  }
-
-  /**
-  * Get status
-  *
-  * @return string
-  */
-  public function getStatus()
-  {
-    return $this->status;
   }
 
   /**
@@ -271,5 +247,29 @@ class Bug {
     public function getGithubLink()
     {
         return $this->githubLink;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Bug
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
