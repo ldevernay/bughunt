@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Liste des bugs</title>
-    </head>
-    <body>
-        <h1>Liste des bugs</h1>
+{% extends 'base.html.twig' %}
 
-        <ul id="bugs_list">
-            {% for bug in bugs %}
-                <li><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block title %}Liste des bugs{% endblock %}
+
+{% block body %}
+<ul id="bugs_list">
+    {% for bug in bugs %}
+        <li><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

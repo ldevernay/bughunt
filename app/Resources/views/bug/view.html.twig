@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Liste des bugs</title>
-    </head>
-    <body>
-        <h1>Your bug is {{ bug.id }}</h1>
-    </body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation du bug {{ bug.id }}{% endblock %}
+
+{% block body %}
+        <h2>Your bug is {{ bug.id }}</h2>
+        <p>Description : {{ bug.description }}</p>
+{% endblock %}
