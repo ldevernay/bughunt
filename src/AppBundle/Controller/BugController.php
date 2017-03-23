@@ -45,15 +45,20 @@ class BugController extends Controller
     ));
   }
 
-  public function showAction($bugId)
+  /**
+  * Matches /bug/*
+  *
+  * @Route("/bug/{slug}", name="bug_view")
+  */
+  public function showAction($slug)
   {
     $bug = $this->getDoctrine()
     ->getRepository('AppBundle:Bug')
-    ->find($bugId);
+    ->find($slug);
 
     if (!$bug) {
       throw $this->createNotFoundException(
-        'No bug found for id '.$bugId
+        'No bug found for id '.$slug
       );
     }
 
