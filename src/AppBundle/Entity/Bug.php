@@ -3,6 +3,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Developper;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity
@@ -17,22 +18,27 @@ class Bug {
   */
   private $id;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $status;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $title;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $description;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100, nullable=true)
   */
   private $githubLink;
   /**
+  * @Assert\NotBlank()
   * Many Bugs have One creator.
   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Developper",cascade={"persist"})
   * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
@@ -45,6 +51,7 @@ class Bug {
   */
   private $fixer;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $languages;

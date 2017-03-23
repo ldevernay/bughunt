@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity
@@ -22,22 +23,27 @@ class Developper {
   */
   private $id;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $username;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $title;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $description;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $github;
   /**
+  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $languages;

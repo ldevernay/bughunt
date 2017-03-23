@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbfdde16bb38557e088924f2e007763e",
-    "content-hash": "a33525f62d586cc3fd43ee8cec3b7dc7",
+    "hash": "0ff1ed25d5e378448aad9fbf7b5fff05",
+    "content-hash": "e592f23a3d88c32e74f29521d7d5a436",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1094,6 +1094,62 @@
                 "psr-3"
             ],
             "time": "2016-10-10 12:19:37"
+        },
+        {
+            "name": "pugx/autocompleter-bundle",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PUGX/PUGXAutoCompleterBundle.git",
+                "reference": "6c5afdf92ac637d443fb6f0d7b4a99b212527adf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PUGX/PUGXAutoCompleterBundle/zipball/6c5afdf92ac637d443fb6f0d7b4a99b212527adf",
+                "reference": "6c5afdf92ac637d443fb6f0d7b4a99b212527adf",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.5",
+                "php": ">=7.0",
+                "symfony/form": "^2.8|^3.2",
+                "symfony/framework-bundle": "^2.8|^3.2"
+            },
+            "require-dev": {
+                "lexik/form-filter-bundle": "^5.0",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "suggest": {
+                "lexik/form-filter-bundle": "To use autocomplete on a filter."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PUGX\\AutocompleterBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Massimiliano Arione",
+                    "email": "garakkio@gmail.com"
+                }
+            ],
+            "description": "Add an autocomplete type to forms",
+            "keywords": [
+                "field",
+                "form",
+                "symfony"
+            ],
+            "time": "2017-01-10 09:18:14"
         },
         {
             "name": "sensio/distribution-bundle",
