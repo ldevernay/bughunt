@@ -20,7 +20,7 @@ class BugController extends Controller
   public function createAction(Request $request)
   {
     $bug = New Bug();
-    $bug->setStatus('open');
+    $bug->setSolved(false);
     $bug->setTitle('Nouvelle exception');
     $bug->setDescription("Quand je lance mon code, une erreur s'affiche");
     $bug->setLanguages("PHP");
@@ -39,7 +39,7 @@ class BugController extends Controller
   {
     // create a bug and give it some dummy data for this example
     $bug = New Bug();
-    $bug->setStatus(false);
+    $bug->setSolved(false);
     $bug->setCreator(new Developper("Bob"));
 
     $form = $this->createFormBuilder($bug)
@@ -47,7 +47,7 @@ class BugController extends Controller
     ->add('description', TextType::class)
     ->add('languages', TextType::class)
     ->add('githubLink', TextType::class)
-    ->add('status', CheckboxType::class, array(
+    ->add('solved', CheckboxType::class, array(
       'disabled' => true
     ))
     ->add('save', SubmitType::class, array('label' => 'Créer Bug'))
@@ -128,7 +128,7 @@ class BugController extends Controller
     ->add('description', TextType::class)
     ->add('languages', TextType::class)
     ->add('githubLink', TextType::class)
-    ->add('status', CheckboxType::class)
+    ->add('solved', CheckboxType::class)
     ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
     ->getForm();
 

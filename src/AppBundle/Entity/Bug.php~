@@ -21,7 +21,7 @@ class Bug {
   * @Assert\NotBlank()
   * @ORM\Column(type="boolean")
   */
-  private $status;
+  private $solved;
   /**
   * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
@@ -249,27 +249,4 @@ class Bug {
         return $this->githubLink;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Bug
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 }

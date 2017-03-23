@@ -6,7 +6,7 @@
         <p class="lead">Your bug is {{ bug.id }}</p>
         <p><strong>Titre :</strong> {{ bug.title }}</p>
         <p><strong>Description :</strong> {{ bug.description }}</p>
-        <p><strong>Etat :</strong> {{ bug.status }}</p>
+        <p><strong>Etat :</strong> {{ bug.solved }}</p>
         <p><strong>Repo sur Github :</strong> {{ bug.githubLink }}</p>
         <p><strong>Créateur :</strong><a href="/developper/{{ bug.creator.id }}"> {{ bug.creator.username }}</a></p>
         {% if bug.fixer != null %}
