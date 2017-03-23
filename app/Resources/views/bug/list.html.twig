@@ -3,9 +3,20 @@
 {% block title %}Liste des bugs{% endblock %}
 
 {% block body %}
-<ul id="bugs_list">
+<table class="table table-striped">
+  <th>Id</th>
+  <th>Titre</th>
+  <th>Langages</th>
+  <th>Créateur</th>
+  <th>Date de création</th>
     {% for bug in bugs %}
-        <li><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></li>
+        <tr>
+          <td><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></td>
+          <td>{{ bug.title }}</td>
+          <td>{{ bug.languages }}</td>
+          <td>{{ bug.creator.username }}</td>
+          <td>{{ bug.creationDate|localizeddate('long', 'short')  }}</td>
+        </tr>
     {% endfor %}
-  </ul>
+  </table>
 {% endblock %}

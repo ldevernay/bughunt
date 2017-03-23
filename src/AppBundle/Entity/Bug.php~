@@ -51,7 +51,7 @@ class Bug {
   /**
   * @ORM\Column(type="datetime")
   */
-  private $creation_date;
+  private $creationDate;
 
   /**
   * Get id
@@ -184,37 +184,13 @@ class Bug {
   }
 
   /**
-  * Set creationDate
-  *
-  * @param \DateTime $creationDate
-  *
-  * @return Bug
-  */
-  public function setCreationDate($creationDate)
-  {
-    $this->creation_date = $creationDate;
-
-    return $this;
-  }
-
-  /**
-  * Get creationDate
-  *
-  * @return \DateTime
-  */
-  public function getCreationDate()
-  {
-    return $this->creation_date;
-  }
-
-  /**
   * Gets triggered only on insert
 
   * @ORM\PrePersist
   */
   public function onPrePersist()
   {
-    $this->creation_date = new \DateTime("now");
+    $this->creationDate = new \DateTime("now");
   }
 
 
