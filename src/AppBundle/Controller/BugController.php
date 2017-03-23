@@ -122,6 +122,9 @@ class BugController extends Controller
     $form = $this->createFormBuilder($bug)
     ->add('title', TextType::class)
     ->add('description', TextType::class)
+    ->add('status', TextType::class)
+    ->add('languages', TextType::class)
+    ->add('githubLink', TextType::class)
     ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
     ->getForm();
 
