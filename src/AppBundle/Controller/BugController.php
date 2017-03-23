@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class BugController extends Controller
 {
@@ -29,6 +31,42 @@ class BugController extends Controller
 
     return new Response("Saved new bug with id ".$bug->getId());
   }
+  /**
+  * @Route("/bug_new", name="bug_new")
+  */
+  public function newAction(Request $request)
+    {
+        // create a bug and give it some dummy data for this example
+        $bug = New Bug();
+        $bug->setStatus('open');
+        $bug->setLanguages("PHP");
+        $bug->setCreator(new Developper("Bob"));
+
+        $form = $this->createFormBuilder($bug)
+            ->add('title', TextType::class)
+            ->add('description', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Bug'))
+            ->getForm();
+
+            $form->handleRequest($request);
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    // $form->getData() holds the submitted values
+                    // but, the original `$task` variable has also been updated
+                    // $bug = $form->getData();
+
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($bug);
+                    $em->flush();
+
+                    return $this->redirectToRoute('bug_list');
+                }
+
+        return $this->render('bug/new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
 
   /**
   * @Route("/bugs", name="bug_list")
