@@ -35,33 +35,34 @@ class BugController extends Controller
   * @Route("/bug_new", name="bug_new")
   */
   public function newAction(Request $request)
-    {
-        // create a bug and give it some dummy data for this example
-        $bug = New Bug();
-        $bug->setStatus('open');
-        $bug->setLanguages("PHP");
-        $bug->setCreator(new Developper("Bob"));
+  {
+    // create a bug and give it some dummy data for this example
+    $bug = New Bug();
+    $bug->setCreator(new Developper("Bob"));
 
-        $form = $this->createFormBuilder($bug)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer Bug'))
-            ->getForm();
+    $form = $this->createFormBuilder($bug)
+    ->add('title', TextType::class)
+    ->add('description', TextType::class)
+    ->add('status', TextType::class)
+    ->add('languages', TextType::class)
+    ->add('githubLink', TextType::class)
+    ->add('save', SubmitType::class, array('label' => 'Créer Bug'))
+    ->getForm();
 
-            $form->handleRequest($request);
+    $form->handleRequest($request);
 
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($bug);
-                    $em->flush();
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($bug);
+      $em->flush();
 
-                    return $this->redirectToRoute('bug_list');
-                }
-
-        return $this->render('bug/form.html.twig', array(
-            'form' => $form->createView(),
-        ));
+      return $this->redirectToRoute('bug_list');
     }
+
+    return $this->render('bug/form.html.twig', array(
+      'form' => $form->createView(),
+    ));
+  }
 
   /**
   * @Route("/bugs", name="bug_list")
@@ -101,65 +102,65 @@ class BugController extends Controller
   }
 
 
-    /**
-    * Matches /bug_edit/*
-    *
-    * @Route("/bug_edit/{slug}", name="bug_edit")
-    */
-    public function editAction($slug, Request $request)
-    {
-      $bug = $this->getDoctrine()
-      ->getRepository('AppBundle:Bug')
-      ->find($slug);
+  /**
+  * Matches /bug_edit/*
+  *
+  * @Route("/bug_edit/{slug}", name="bug_edit")
+  */
+  public function editAction($slug, Request $request)
+  {
+    $bug = $this->getDoctrine()
+    ->getRepository('AppBundle:Bug')
+    ->find($slug);
 
-      if (!$bug) {
-        throw $this->createNotFoundException(
-          'No bug found for id '.$slug
-        );
-      }
-
-      $form = $this->createFormBuilder($bug)
-          ->add('title', TextType::class)
-          ->add('description', TextType::class)
-          ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
-          ->getForm();
-
-          $form->handleRequest($request);
-
-              if ($form->isSubmitted() && $form->isValid()) {
-                  $em = $this->getDoctrine()->getManager();
-                  $em->flush();
-
-                  return $this->redirectToRoute('bug_list');
-              }
-
-      return $this->render('bug/form.html.twig', array(
-          'form' => $form->createView(),
-      ));
+    if (!$bug) {
+      throw $this->createNotFoundException(
+        'No bug found for id '.$slug
+      );
     }
 
-    /**
-    * Matches /bug_delete/*
-    *
-    * @Route("/bug_delete/{slug}", name="bug_delete")
-    */
-    public function deleteAction($slug)
-    {
-      $bug = $this->getDoctrine()
-      ->getRepository('AppBundle:Bug')
-      ->find($slug);
+    $form = $this->createFormBuilder($bug)
+    ->add('title', TextType::class)
+    ->add('description', TextType::class)
+    ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
+    ->getForm();
 
-      if (!$bug) {
-        throw $this->createNotFoundException(
-          'No bug found for id '.$slug
-        );
-      }
+    $form->handleRequest($request);
 
-          $em = $this->getDoctrine()->getManager();
-          $em->remove($bug);
-          $em->flush();
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
 
       return $this->redirectToRoute('bug_list');
     }
+
+    return $this->render('bug/form.html.twig', array(
+      'form' => $form->createView(),
+    ));
+  }
+
+  /**
+  * Matches /bug_delete/*
+  *
+  * @Route("/bug_delete/{slug}", name="bug_delete")
+  */
+  public function deleteAction($slug)
+  {
+    $bug = $this->getDoctrine()
+    ->getRepository('AppBundle:Bug')
+    ->find($slug);
+
+    if (!$bug) {
+      throw $this->createNotFoundException(
+        'No bug found for id '.$slug
+      );
+    }
+
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($bug);
+    $em->flush();
+
+    return $this->redirectToRoute('bug_list');
+  }
 
 }
