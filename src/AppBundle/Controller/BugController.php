@@ -137,4 +137,29 @@ class BugController extends Controller
           'form' => $form->createView(),
       ));
     }
+
+    /**
+    * Matches /bug_delete/*
+    *
+    * @Route("/bug_delete/{slug}", name="bug_delete")
+    */
+    public function deleteAction($slug)
+    {
+      $bug = $this->getDoctrine()
+      ->getRepository('AppBundle:Bug')
+      ->find($slug);
+
+      if (!$bug) {
+        throw $this->createNotFoundException(
+          'No bug found for id '.$slug
+        );
+      }
+
+          $em = $this->getDoctrine()->getManager();
+          $em->remove($bug);
+          $em->flush();
+
+      return $this->redirectToRoute('bug_list');
+    }
+
 }
