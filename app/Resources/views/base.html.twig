@@ -8,9 +8,11 @@
 <body>
   <div id="sidebar">
     {% block sidebar %}
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/bugs">Liste des bugs</a></li>
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation"><a href="/bugs">Liste des bugs</a></li>
+      <li role="presentation"><a href="/bug_new">Créer un bug</a></li>
+      <li role="presentation"><a href="/">Votre compte</a></li>
+
     </ul>
     {% endblock %}
   </div>
