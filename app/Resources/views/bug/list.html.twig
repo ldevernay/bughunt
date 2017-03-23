@@ -9,13 +9,15 @@
   <th>Langages</th>
   <th>Créateur</th>
   <th>Date de création</th>
+  <th>Actions</th>
     {% for bug in bugs %}
         <tr>
-          <td><a href="/bug/{{ bug.id }}">{{ bug.id }}</a></td>
-          <td><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></td>
+          <td>{{ bug.id }}</td>
+          <td>{{ bug.title }}</td>
           <td>{{ bug.languages }}</td>
           <td>{{ bug.creator.username }}</td>
           <td>{{ bug.creationDate|localizeddate('long', 'short')  }}</td>
+          <td><a href="/bug/{{ bug.id }}"><button class="btn btn-primary">Voir</button></a></td>
         </tr>
     {% endfor %}
   </table>
