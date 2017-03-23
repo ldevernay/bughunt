@@ -45,17 +45,12 @@ class BugController extends Controller
         $form = $this->createFormBuilder($bug)
             ->add('title', TextType::class)
             ->add('description', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Bug'))
+            ->add('save', SubmitType::class, array('label' => 'Créer Bug'))
             ->getForm();
 
             $form->handleRequest($request);
 
                 if ($form->isSubmitted() && $form->isValid()) {
-                    // $form->getData() holds the submitted values
-                    // but, the original `$task` variable has also been updated
-                    // $bug = $form->getData();
-
-
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($bug);
                     $em->flush();
@@ -63,7 +58,7 @@ class BugController extends Controller
                     return $this->redirectToRoute('bug_list');
                 }
 
-        return $this->render('bug/new.html.twig', array(
+        return $this->render('bug/form.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -104,4 +99,42 @@ class BugController extends Controller
       'bug' => $bug,
     ));
   }
+
+
+    /**
+    * Matches /bug_edit/*
+    *
+    * @Route("/bug_edit/{slug}", name="bug_edit")
+    */
+    public function editAction($slug, Request $request)
+    {
+      $bug = $this->getDoctrine()
+      ->getRepository('AppBundle:Bug')
+      ->find($slug);
+
+      if (!$bug) {
+        throw $this->createNotFoundException(
+          'No bug found for id '.$slug
+        );
+      }
+
+      $form = $this->createFormBuilder($bug)
+          ->add('title', TextType::class)
+          ->add('description', TextType::class)
+          ->add('save', SubmitType::class, array('label' => 'Modifier Bug'))
+          ->getForm();
+
+          $form->handleRequest($request);
+
+              if ($form->isSubmitted() && $form->isValid()) {
+                  $em = $this->getDoctrine()->getManager();
+                  $em->flush();
+
+                  return $this->redirectToRoute('bug_list');
+              }
+
+      return $this->render('bug/form.html.twig', array(
+          'form' => $form->createView(),
+      ));
+    }
 }

@@ -17,7 +17,10 @@
           <td>{{ bug.languages }}</td>
           <td>{{ bug.creator.username }}</td>
           <td>{{ bug.creationDate|localizeddate('long', 'short')  }}</td>
-          <td><a href="/bug/{{ bug.id }}"><button class="btn btn-primary">Voir</button></a></td>
+          <td>
+            <a href="/bug/{{ bug.id }}"><button class="btn btn-primary">Voir</button></a>
+            <a href="/bug_edit/{{ bug.id }}"><button class="btn btn-primary">Modifier</button></a>
+          </td>
         </tr>
     {% endfor %}
   </table>
