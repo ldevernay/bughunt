@@ -31,7 +31,7 @@ class Bug {
   /**
   * @ORM\Column(type="string", length=100, nullable=true)
   */
-  private $github_link;
+  private $githubLink;
   /**
   * Many Bugs have One creator.
   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Developper",cascade={"persist"})
@@ -133,30 +133,6 @@ class Bug {
   public function getDescription()
   {
     return $this->description;
-  }
-
-  /**
-  * Set githubLink
-  *
-  * @param string $githubLink
-  *
-  * @return Bug
-  */
-  public function setGithubLink($githubLink)
-  {
-    $this->github_link = $githubLink;
-
-    return $this;
-  }
-
-  /**
-  * Get githubLink
-  *
-  * @return string
-  */
-  public function getGithubLink()
-  {
-    return $this->github_link;
   }
 
   /**
@@ -264,5 +240,29 @@ class Bug {
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Set githubLink
+     *
+     * @param string $githubLink
+     *
+     * @return Bug
+     */
+    public function setGithubLink($githubLink)
+    {
+        $this->githubLink = $githubLink;
+
+        return $this;
+    }
+
+    /**
+     * Get githubLink
+     *
+     * @return string
+     */
+    public function getGithubLink()
+    {
+        return $this->githubLink;
     }
 }

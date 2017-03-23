@@ -11,8 +11,8 @@
   <th>Date de création</th>
     {% for bug in bugs %}
         <tr>
+          <td><a href="/bug/{{ bug.id }}">{{ bug.id }}</a></td>
           <td><a href="/bug/{{ bug.id }}">{{ bug.title }}</a></td>
-          <td>{{ bug.title }}</td>
           <td>{{ bug.languages }}</td>
           <td>{{ bug.creator.username }}</td>
           <td>{{ bug.creationDate|localizeddate('long', 'short')  }}</td>

@@ -3,6 +3,15 @@
 {% block title %}Consultation du bug {{ bug.id }}{% endblock %}
 
 {% block body %}
-        <h2>Your bug is {{ bug.id }}</h2>
-        <p>Description : {{ bug.description }}</p>
+        <p class="lead">Your bug is {{ bug.id }}</p>
+        <p><strong>Titre :</strong> {{ bug.title }}</p>
+        <p><strong>Description :</strong> {{ bug.description }}</p>
+        <p><strong>Etat :</strong> {{ bug.status }}</p>
+        <p><strong>Repo sur Github :</strong> {{ bug.githubLink }}</p>
+        <p><strong>Créateur :</strong> {{ bug.creator.username }}</p>
+        {% if bug.fixer != null %}
+        <p><strong>Fixer :</strong> {{ bug.fixer.username }}</p>
+        {% endif %}
+        <p><strong>Langages :</strong> {{ bug.languages }}</p>
+        <p><strong>Date de création :</strong> {{ bug.creationDate|localizeddate('long', 'short') }}</p>
 {% endblock %}
