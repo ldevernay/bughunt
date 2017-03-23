@@ -8,9 +8,9 @@
         <p><strong>Description :</strong> {{ bug.description }}</p>
         <p><strong>Etat :</strong> {{ bug.status }}</p>
         <p><strong>Repo sur Github :</strong> {{ bug.githubLink }}</p>
-        <p><strong>Créateur :</strong> {{ bug.creator.username }}</p>
+        <p><strong>Créateur :</strong><a href="/developper/{{ bug.creator.id }}"> {{ bug.creator.username }}</a></p>
         {% if bug.fixer != null %}
-        <p><strong>Fixer :</strong> {{ bug.fixer.username }}</p>
+        <p><strong>Fixer :</strong><a href="/developper/{{ bug.fixer.id }}"> {{ bug.fixer.username }}</a></p>
         {% endif %}
         <p><strong>Langages :</strong> {{ bug.languages }}</p>
         <p><strong>Date de création :</strong> {{ bug.creationDate|localizeddate('long', 'short') }}</p>

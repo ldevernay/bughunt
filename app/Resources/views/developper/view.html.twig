@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation du développeur {{ developper.id }}{% endblock %}
+
+{% block body %}
+        <p class="lead">{{ developper.username }}</p>
+        <p><strong>Titre :</strong> {{ developper.title }}</p>
+        <p><strong>Description :</strong> {{ developper.description }}</p>
+        <p><strong>Profil Github :</strong> {{ developper.github }}</p>
+        <p><strong>Langages :</strong> {{ developper.languages }}</p>
+{% endblock %}
