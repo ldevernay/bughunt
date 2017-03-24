@@ -2,48 +2,42 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity
 * @ORM\Table(name="developper")
 */
-class Developper {
-  function __construct($dev_name) {
-    $this->username = $dev_name;
-    $this->title = $dev_name;
-    $this->description = $dev_name;
-    $this->github = $dev_name;
-    $this->languages = $dev_name;
+class Developper extends BaseUser {
+
+  public function __construct() {
+    parent::__construct();
+
+    $this->title = "BugHunter";
+    $this->description = "We are fearless BugHunters";
+    $this->github = "";
+    $this->languages = "";
   }
   /**
   * @ORM\Column(type="integer")
   * @ORM\Id
   * @ORM\GeneratedValue(strategy="AUTO")
   */
-  private $id;
+  protected $id;
   /**
-  * @Assert\NotBlank()
-  * @ORM\Column(type="string", length=100)
-  */
-  private $username;
-  /**
-  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $title;
   /**
-  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $description;
   /**
-  * @Assert\NotBlank()
   * @ORM\Column(type="string", length=100)
   */
   private $github;
   /**
-  * @Assert\NotBlank()
   * @ORM\Column(type="text")
   */
   private $languages;
@@ -56,30 +50,6 @@ class Developper {
   public function getId()
   {
     return $this->id;
-  }
-
-  /**
-  * Set username
-  *
-  * @param string $username
-  *
-  * @return Developper
-  */
-  public function setUsername($username)
-  {
-    $this->username = $username;
-
-    return $this;
-  }
-
-  /**
-  * Get username
-  *
-  * @return string
-  */
-  public function getUsername()
-  {
-    return $this->username;
   }
 
   /**
